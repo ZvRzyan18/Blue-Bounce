@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctfgxtysogdi7"]
+[gd_scene load_steps=20 format=3 uid="uid://ctfgxtysogdi7"]
 
 [ext_resource type="Texture2D" uid="uid://bjra3o5iy3gps" path="res://textures/wall.png" id="1_ootpb"]
 [ext_resource type="Texture2D" uid="uid://c57p0mjfqrgwg" path="res://textures/spike.png" id="2_v38iq"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cdc18pdtg513b" path="res://textures/blue_ball.png" id="4_crycw"]
 [ext_resource type="Texture2D" uid="uid://urhy4jdfsky3" path="res://textures/green_ball.png" id="5_i2041"]
 [ext_resource type="Script" uid="uid://i0aabtk72pmy" path="res://scripts/player.gd" id="7_i2041"]
+[ext_resource type="Script" uid="uid://8h0r3ndi2lpw" path="res://scripts/spike_area1.gd" id="7_usj0q"]
 [ext_resource type="Script" uid="uid://bme0aemmxgm3y" path="res://scripts/camera.gd" id="8_xy4tn"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_ootpb"]
@@ -18,7 +19,7 @@ size = Vector2(30.333328, 118.66667)
 size = Vector2(93.66668, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xy4tn"]
-size = Vector2(80.98968, 16)
+size = Vector2(85.27826, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usj0q"]
 size = Vector2(152, 29.333328)
@@ -31,6 +32,9 @@ size = Vector2(145.74995, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx44q"]
 size = Vector2(31.99997, 91.66668)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_xy4tn"]
+points = PackedVector2Array(229.66669, -10, 222.66669, 4.3333282, 236.66669, 4.3333282)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n8vhr"]
 radius = 45.0
@@ -243,7 +247,7 @@ position = Vector2(77.5, 77.66667)
 shape = SubResource("RectangleShape2D_i2041")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="chunk1"]
-position = Vector2(155.86584, 39.134186)
+position = Vector2(154.15045, 40.51625)
 rotation = -0.7853982
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_xy4tn")
@@ -253,7 +257,7 @@ position = Vector2(254.66669, 19.333328)
 shape = SubResource("RectangleShape2D_usj0q")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="chunk1"]
-position = Vector2(356, 44.999996)
+position = Vector2(356.66666, 44.666664)
 rotation = 0.7853982
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_5j5gb")
@@ -266,19 +270,30 @@ shape = SubResource("RectangleShape2D_mx85b")
 position = Vector2(522.6667, 19.5)
 shape = SubResource("RectangleShape2D_hx44q")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="SpikeArea" type="Area2D" parent="chunk1"]
+script = ExtResource("7_usj0q")
+
+[node name="SpikeCollision2" type="CollisionShape2D" parent="chunk1/SpikeArea"]
+position = Vector2(73.66667, -0.33333588)
+shape = SubResource("ConvexPolygonShape2D_xy4tn")
+
+[node name="SpikeCollision1" type="CollisionShape2D" parent="chunk1/SpikeArea"]
+shape = SubResource("ConvexPolygonShape2D_xy4tn")
+
+[node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("7_i2041")
 
-[node name="Camera" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(570, 342)
+[node name="Camera" type="Camera2D" parent="Player"]
+position = Vector2(-3, 7)
+anchor_mode = 0
 script = ExtResource("8_xy4tn")
 
-[node name="blue_ball2" type="MeshInstance2D" parent="CharacterBody2D"]
+[node name="blue_ball2" type="MeshInstance2D" parent="Player"]
 position = Vector2(552, 312)
 scale = Vector2(90, -90)
 mesh = SubResource("QuadMesh_ootpb")
 texture = ExtResource("4_crycw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(553, 313)
 shape = SubResource("CircleShape2D_n8vhr")
