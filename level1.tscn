@@ -1,0 +1,284 @@
+[gd_scene load_steps=18 format=3 uid="uid://ctfgxtysogdi7"]
+
+[ext_resource type="Texture2D" uid="uid://bjra3o5iy3gps" path="res://textures/wall.png" id="1_ootpb"]
+[ext_resource type="Texture2D" uid="uid://c57p0mjfqrgwg" path="res://textures/spike.png" id="2_v38iq"]
+[ext_resource type="Texture2D" uid="uid://dfde2m0ruyr41" path="res://textures/slope.png" id="3_v8kj3"]
+[ext_resource type="Texture2D" uid="uid://deds3nc3468j1" path="res://textures/portal.png" id="3_v38iq"]
+[ext_resource type="Texture2D" uid="uid://cdc18pdtg513b" path="res://textures/blue_ball.png" id="4_crycw"]
+[ext_resource type="Texture2D" uid="uid://urhy4jdfsky3" path="res://textures/green_ball.png" id="5_i2041"]
+[ext_resource type="Script" uid="uid://i0aabtk72pmy" path="res://scripts/player.gd" id="7_i2041"]
+[ext_resource type="Script" uid="uid://bme0aemmxgm3y" path="res://scripts/camera.gd" id="8_xy4tn"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ootpb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crycw"]
+size = Vector2(30.333328, 118.66667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2041"]
+size = Vector2(93.66668, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xy4tn"]
+size = Vector2(80.98968, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usj0q"]
+size = Vector2(152, 29.333328)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5j5gb"]
+size = Vector2(93.58659, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mx85b"]
+size = Vector2(145.74995, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx44q"]
+size = Vector2(31.99997, 91.66668)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n8vhr"]
+radius = 45.0
+
+[node name="Level1" type="Node2D"]
+
+[node name="Slope" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(125, -3)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("3_v8kj3")
+
+[node name="Spike" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(76.00001, -2.0000002)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("2_v38iq")
+
+[node name="portal" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(76.00001, -2.0000002)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("3_v38iq")
+
+[node name="blue_ball" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(76.00001, -2.0000002)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("4_crycw")
+
+[node name="green_ball" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(76.00001, -2.0000002)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("5_i2041")
+
+[node name="chunk1" type="StaticBody2D" parent="."]
+position = Vector2(354, 314)
+scale = Vector2(3, 3)
+
+[node name="Wall" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(16, 78)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall2" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(46.000004, 78)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall3" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(16, 48)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall4" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(76.00001, 78)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall5" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(16, 18.000002)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall6" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(16, -12)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall7" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(106.00001, 78.00001)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall8" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(194.00002, 19.000002)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall9" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(224.00002, 19.000002)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall10" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(254.00002, 19.000002)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall11" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(284, 19.000002)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall12" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(314, 19.000002)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall13" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(404, 79)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall14" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(433, 79)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall15" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(463.00003, 79)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall16" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(492.00003, 79)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall17" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(522, 50)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall18" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(522.00006, 20.000004)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Wall19" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(522.00006, -10)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("1_ootpb")
+
+[node name="Slope2" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(136.00002, 48.000004)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("3_v8kj3")
+
+[node name="Slope3" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(165.00002, 19.000002)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("3_v8kj3")
+
+[node name="Slope4" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(344, 19)
+rotation = -3.1415927
+scale = Vector2(30, 30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("3_v8kj3")
+
+[node name="Slope5" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(374.00003, 49.000004)
+rotation = -3.1415927
+scale = Vector2(30, 30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("3_v8kj3")
+
+[node name="Spike2" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(229, -11)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("2_v38iq")
+
+[node name="Spike3" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(303, -11)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("2_v38iq")
+
+[node name="portal2" type="MeshInstance2D" parent="chunk1"]
+position = Vector2(493, 49)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("3_v38iq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chunk1"]
+position = Vector2(15.5, 32.66667)
+shape = SubResource("RectangleShape2D_crycw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="chunk1"]
+position = Vector2(77.5, 77.66667)
+shape = SubResource("RectangleShape2D_i2041")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="chunk1"]
+position = Vector2(155.86584, 39.134186)
+rotation = -0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_xy4tn")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="chunk1"]
+position = Vector2(254.66669, 19.333328)
+shape = SubResource("RectangleShape2D_usj0q")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="chunk1"]
+position = Vector2(356, 44.999996)
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_5j5gb")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="chunk1"]
+position = Vector2(453.66666, 78.99999)
+shape = SubResource("RectangleShape2D_mx85b")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="chunk1"]
+position = Vector2(522.6667, 19.5)
+shape = SubResource("RectangleShape2D_hx44q")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("7_i2041")
+
+[node name="Camera" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(570, 342)
+script = ExtResource("8_xy4tn")
+
+[node name="blue_ball2" type="MeshInstance2D" parent="CharacterBody2D"]
+position = Vector2(552, 312)
+scale = Vector2(90, -90)
+mesh = SubResource("QuadMesh_ootpb")
+texture = ExtResource("4_crycw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(553, 313)
+shape = SubResource("CircleShape2D_n8vhr")

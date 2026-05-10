@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7yer4rsuw56g"]
+
+[ext_resource type="PackedScene" uid="uid://ctfgxtysogdi7" path="res://level1.tscn" id="1_jldtq"]
+[ext_resource type="Script" uid="uid://ji0k5w0dl0kl" path="res://scripts/left.gd" id="2_n1geg"]
+[ext_resource type="Script" uid="uid://cbdcfux1jjwat" path="res://scripts/right.gd" id="3_dd4ha"]
+[ext_resource type="Script" uid="uid://cs6cng85fd3ui" path="res://scripts/jump.gd" id="4_cp7gx"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_n1geg"]
+viewport_path = NodePath("AspectRatioContainer/SubViewport")
+
+[node name="Controller" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 768.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -920.0
+offset_bottom = -500.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_n1geg")
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="AspectRatioContainer"]
+size = Vector2i(1920, 1080)
+
+[node name="Level1" parent="AspectRatioContainer/SubViewport" instance=ExtResource("1_jldtq")]
+
+[node name="Left" type="Button" parent="."]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 498.0
+offset_right = 190.0
+offset_bottom = 541.0
+text = "  <  "
+script = ExtResource("2_n1geg")
+
+[node name="Right" type="Button" parent="."]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 496.0
+offset_right = 291.0
+offset_bottom = 539.0
+text = "  >  
+"
+script = ExtResource("3_dd4ha")
+
+[node name="Jump" type="Button" parent="."]
+layout_mode = 0
+offset_left = 969.0
+offset_top = 481.0
+offset_right = 1026.0
+offset_bottom = 541.0
+action_mode = 0
+text = "  ^  "
+script = ExtResource("4_cp7gx")
