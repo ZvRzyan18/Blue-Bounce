@@ -8,6 +8,7 @@ var mu : bool = false
 
 var gravity : float = 98.1
 var is_holding : bool = false
+var first_position : Vector2 = Vector2.ZERO
 
 func move_left_down() -> void:
 	velocity.x = 0.0
@@ -26,7 +27,9 @@ func move_right_up() -> void:
 func move_up() -> void:
 	velocity.x = 0.0
 	mu = true
-	
+
+func on_reset_position() -> void:
+	self.position = first_position
 	
 func _init() -> void:
 	Events.left_down.connect(move_left_down)
@@ -34,8 +37,14 @@ func _init() -> void:
 	Events.right_down.connect(move_right_down)
 	Events.right_up.connect(move_right_up)
 	Events.jump_click.connect(move_up)
+	Events.on_player_reset.connect(on_reset_position)
+	
+	first_position.x = self.position.x
+	first_position.y = self.position.y
 
 func _physics_process(delta : float) -> void:
+	if Events.is_died:
+		return
 	if ml :
 		velocity.x -= speed * delta
 		move_and_slide()

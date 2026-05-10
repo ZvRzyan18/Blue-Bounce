@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cnlawjn0b2cct" path="res://scripts/play_button.gd" id="1_s2ta7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4887"]
-bg_color = Color(0.6, 0.47058824, 0.6, 1)
+bg_color = Color(0.33288068, 0.3328807, 0.33288056, 1)
 
 [node name="MainPannel" type="Control"]
 layout_mode = 3

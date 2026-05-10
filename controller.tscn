@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7yer4rsuw56g"]
+[gd_scene load_steps=10 format=3 uid="uid://b7yer4rsuw56g"]
 
 [ext_resource type="PackedScene" uid="uid://ctfgxtysogdi7" path="res://level1.tscn" id="1_jldtq"]
+[ext_resource type="Script" uid="uid://cehtfqqah0rg0" path="res://scripts/sub_viewport.gd" id="1_my0pc"]
+[ext_resource type="Script" uid="uid://bvhwb7iffuf66" path="res://scripts/restart_dialog.gd" id="2_5wrki"]
 [ext_resource type="Script" uid="uid://ji0k5w0dl0kl" path="res://scripts/left.gd" id="2_n1geg"]
+[ext_resource type="Script" uid="uid://dfau5yo4pbnd" path="res://scripts/restart_button.gd" id="2_nclek"]
 [ext_resource type="Script" uid="uid://cbdcfux1jjwat" path="res://scripts/right.gd" id="3_dd4ha"]
 [ext_resource type="Script" uid="uid://cs6cng85fd3ui" path="res://scripts/jump.gd" id="4_cp7gx"]
+[ext_resource type="Script" uid="uid://cyxjyxuol14n6" path="res://scripts/level_display.gd" id="7_xsijp"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_n1geg"]
 viewport_path = NodePath("AspectRatioContainer/SubViewport")
@@ -38,20 +42,54 @@ metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="AspectRatioContainer"]
 size = Vector2i(1920, 1080)
+script = ExtResource("1_my0pc")
 
 [node name="Level1" parent="AspectRatioContainer/SubViewport" instance=ExtResource("1_jldtq")]
+
+[node name="RestartDialog" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.30800003
+anchor_top = 0.28500003
+anchor_right = 0.30800003
+anchor_bottom = 0.28500003
+offset_left = -372.36005
+offset_top = -204.80002
+offset_right = 372.63995
+offset_bottom = 205.19998
+script = ExtResource("2_5wrki")
+
+[node name="Label" type="Label" parent="RestartDialog"]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 151.0
+offset_right = 414.0
+offset_bottom = 187.0
+theme_override_font_sizes/font_size = 26
+text = "You Died"
+
+[node name="RestartButton" type="Button" parent="RestartDialog"]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 297.0
+offset_right = 403.0
+offset_bottom = 328.0
+text = "Try Again."
+script = ExtResource("2_nclek")
 
 [node name="Left" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.085
-anchor_top = 0.48100004
-anchor_right = 0.085
-anchor_bottom = 0.48100004
-offset_left = -26.199997
-offset_top = -21.480042
-offset_right = 26.800003
-offset_bottom = 21.519958
+anchor_left = 0.096
+anchor_top = 0.46600002
+anchor_right = 0.096
+anchor_bottom = 0.46600002
+offset_left = -47.320007
+offset_top = -37.28003
+offset_right = 47.679993
+offset_bottom = 37.71997
+theme_override_font_sizes/font_size = 30
 text = "  <  "
 script = ExtResource("2_n1geg")
 metadata/_edit_use_anchors_ = true
@@ -59,14 +97,15 @@ metadata/_edit_use_anchors_ = true
 [node name="Right" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.136
-anchor_top = 0.47900003
-anchor_right = 0.136
-anchor_bottom = 0.47900003
-offset_left = -30.120026
-offset_top = -21.320007
-offset_right = 29.879974
-offset_bottom = 21.679993
+anchor_left = 0.1826875
+anchor_top = 0.46300003
+anchor_right = 0.178
+anchor_bottom = 0.46300003
+offset_left = -50.76001
+offset_top = -34.04004
+offset_right = 50.23999
+offset_bottom = 33.95996
+theme_override_font_sizes/font_size = 30
 text = "  >  
 "
 script = ExtResource("3_dd4ha")
@@ -75,15 +114,23 @@ metadata/_edit_use_anchors_ = true
 [node name="Jump" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.52000004
-anchor_top = 0.47300002
-anchor_right = 0.52000004
-anchor_bottom = 0.47300002
-offset_left = -29.400085
-offset_top = -29.840027
-offset_right = 27.599915
-offset_bottom = 30.159973
+anchor_left = 0.50600004
+anchor_top = 0.46500003
+anchor_right = 0.50600004
+anchor_bottom = 0.46500003
+offset_left = -45.52008
+offset_top = -43.200043
+offset_right = 45.47992
+offset_bottom = 42.799957
+theme_override_font_sizes/font_size = 30
 action_mode = 0
 text = "  ^  "
 script = ExtResource("4_cp7gx")
 metadata/_edit_use_anchors_ = true
+
+[node name="LevelDisplay" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level : 1"
+script = ExtResource("7_xsijp")

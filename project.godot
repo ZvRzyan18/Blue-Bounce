@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Events="*res://scripts/events.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [editor]
 
 import/use_multiple_threads=false

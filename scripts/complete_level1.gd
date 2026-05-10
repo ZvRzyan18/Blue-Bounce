@@ -5,6 +5,6 @@ func _ready() -> void:
 
 func _on_body_entered(body : Node2D) -> void:
 	if body.name == "Player" :
-		Events.is_died = true
-		Events.popup_restart_dialog.emit()
+		Events.on_complete_level.emit()
+		
 		

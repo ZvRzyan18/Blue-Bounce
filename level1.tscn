@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ctfgxtysogdi7"]
+[gd_scene load_steps=22 format=3 uid="uid://ctfgxtysogdi7"]
 
 [ext_resource type="Texture2D" uid="uid://bjra3o5iy3gps" path="res://textures/wall.png" id="1_ootpb"]
 [ext_resource type="Texture2D" uid="uid://c57p0mjfqrgwg" path="res://textures/spike.png" id="2_v38iq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://urhy4jdfsky3" path="res://textures/green_ball.png" id="5_i2041"]
 [ext_resource type="Script" uid="uid://i0aabtk72pmy" path="res://scripts/player.gd" id="7_i2041"]
 [ext_resource type="Script" uid="uid://8h0r3ndi2lpw" path="res://scripts/spike_area1.gd" id="7_usj0q"]
+[ext_resource type="Script" uid="uid://dhike1qw3fuqv" path="res://scripts/complete_level1.gd" id="8_5j5gb"]
 [ext_resource type="Script" uid="uid://bme0aemmxgm3y" path="res://scripts/camera.gd" id="8_xy4tn"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_ootpb"]
@@ -35,6 +36,9 @@ size = Vector2(31.99997, 91.66668)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_xy4tn"]
 points = PackedVector2Array(229.66669, -10, 222.66669, 4.3333282, 236.66669, 4.3333282)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8vhr"]
+size = Vector2(14, 27)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n8vhr"]
 radius = 45.0
@@ -279,6 +283,13 @@ shape = SubResource("ConvexPolygonShape2D_xy4tn")
 
 [node name="SpikeCollision1" type="CollisionShape2D" parent="chunk1/SpikeArea"]
 shape = SubResource("ConvexPolygonShape2D_xy4tn")
+
+[node name="CompleteLevel" type="Area2D" parent="chunk1"]
+script = ExtResource("8_5j5gb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chunk1/CompleteLevel"]
+position = Vector2(494.33337, 48.5)
+shape = SubResource("RectangleShape2D_n8vhr")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("7_i2041")

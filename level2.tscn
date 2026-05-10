@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dclyyihyifquq"]
+
+[ext_resource type="Texture2D" uid="uid://bjra3o5iy3gps" path="res://textures/wall.png" id="1_y0xe8"]
+[ext_resource type="Texture2D" uid="uid://dfde2m0ruyr41" path="res://textures/slope.png" id="2_r6vdu"]
+[ext_resource type="Texture2D" uid="uid://c57p0mjfqrgwg" path="res://textures/spike.png" id="3_21xmu"]
+[ext_resource type="Texture2D" uid="uid://cdc18pdtg513b" path="res://textures/blue_ball.png" id="4_8i3m3"]
+[ext_resource type="Texture2D" uid="uid://urhy4jdfsky3" path="res://textures/green_ball.png" id="5_rmy57"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_r40rm"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="Wall" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(52, 29)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_r40rm")
+texture = ExtResource("1_y0xe8")
+
+[node name="Slope" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(52, 29)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_r40rm")
+texture = ExtResource("2_r6vdu")
+
+[node name="Spike" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(52, 29)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_r40rm")
+texture = ExtResource("3_21xmu")
+
+[node name="Blue_Ball" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(52, 29)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_r40rm")
+texture = ExtResource("4_8i3m3")
+
+[node name="Green_Ball" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(52, 29)
+scale = Vector2(30, -30)
+mesh = SubResource("QuadMesh_r40rm")
+texture = ExtResource("5_rmy57")
