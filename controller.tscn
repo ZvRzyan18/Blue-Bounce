@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7yer4rsuw56g"]
+[gd_scene load_steps=12 format=3 uid="uid://b7yer4rsuw56g"]
 
 [ext_resource type="PackedScene" uid="uid://ctfgxtysogdi7" path="res://level1.tscn" id="1_jldtq"]
 [ext_resource type="Script" uid="uid://cehtfqqah0rg0" path="res://scripts/sub_viewport.gd" id="1_my0pc"]
@@ -7,9 +7,11 @@
 [ext_resource type="Script" uid="uid://dfau5yo4pbnd" path="res://scripts/restart_button.gd" id="2_nclek"]
 [ext_resource type="Script" uid="uid://cbdcfux1jjwat" path="res://scripts/right.gd" id="3_dd4ha"]
 [ext_resource type="Script" uid="uid://cs6cng85fd3ui" path="res://scripts/jump.gd" id="4_cp7gx"]
+[ext_resource type="Script" uid="uid://d2kfcigxrkx23" path="res://scripts/complete_dialog.gd" id="5_8borx"]
+[ext_resource type="Script" uid="uid://b8bqhw8wtpsbc" path="res://scripts/complete_button.gd" id="6_0a1g2"]
 [ext_resource type="Script" uid="uid://cyxjyxuol14n6" path="res://scripts/level_display.gd" id="7_xsijp"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_n1geg"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_my0pc"]
 viewport_path = NodePath("AspectRatioContainer/SubViewport")
 
 [node name="Controller" type="Control"]
@@ -31,13 +33,14 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -960.0
 offset_top = -540.0
-offset_right = -920.0
-offset_bottom = -500.0
+offset_right = 960.0
+offset_bottom = 540.0
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="AspectRatioContainer"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_n1geg")
+texture = SubResource("ViewportTexture_my0pc")
+stretch_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="AspectRatioContainer"]
@@ -78,6 +81,39 @@ offset_bottom = 328.0
 text = "Try Again."
 script = ExtResource("2_nclek")
 
+[node name="CompleteDialog" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.30800003
+anchor_top = 0.28500003
+anchor_right = 0.30800003
+anchor_bottom = 0.28500003
+offset_left = -372.36005
+offset_top = -204.80002
+offset_right = 372.63995
+offset_bottom = 205.19998
+script = ExtResource("5_8borx")
+
+[node name="Label" type="Label" parent="CompleteDialog"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 131.0
+offset_right = 643.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 26
+text = "Congrats, You have completed the Game!."
+
+[node name="CompleteButton" type="Button" parent="CompleteDialog"]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 297.0
+offset_right = 403.0
+offset_bottom = 328.0
+text = "Main Menu
+"
+script = ExtResource("6_0a1g2")
+
 [node name="Left" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -97,7 +133,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Right" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1826875
+anchor_left = 0.178
 anchor_top = 0.46300003
 anchor_right = 0.178
 anchor_bottom = 0.46300003
