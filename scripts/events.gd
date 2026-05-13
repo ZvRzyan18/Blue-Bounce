@@ -16,6 +16,8 @@ signal on_player_reset()
 
 signal on_complete_level()
 
+signal popup_complete_dialog()
+
 func _init() -> void:
 	left_down.emit()
 	left_up.emit()
@@ -27,3 +29,4 @@ func _init() -> void:
 	on_player_reset.emit()
 	on_level_changed.emit()
 	on_complete_level.emit()
+	popup_complete_dialog.emit()
